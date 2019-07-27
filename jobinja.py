@@ -7,6 +7,7 @@ from http.cookiejar import CookieJar
 from crawlRepo import *
 from datetime import datetime, timedelta
 
+
 class jobinjaParser():
     def __init__(self, repo=None, page_limit=3):
         self.page_limit = page_limit
