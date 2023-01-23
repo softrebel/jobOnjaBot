@@ -19,7 +19,7 @@ mechanize==0.4.2
 mysql-connector-python==8.0.16
 pager==3.3
 poyo==0.4.2
-protobuf==3.7.1
+protobuf==3.18.3
 pyaes==1.6.1
 pyasn1==0.4.5
 pycparser==2.19
