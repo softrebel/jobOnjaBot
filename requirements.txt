@@ -15,7 +15,7 @@ idna==2.8
 Jinja2==2.11.3
 jinja2-time==0.2.0
 MarkupSafe==1.1.1
-mechanize==0.4.2
+mechanize==0.4.6
 mysql-connector-python==8.0.16
 pager==3.3
 poyo==0.4.2
