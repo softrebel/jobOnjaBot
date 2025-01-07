@@ -172,3 +172,5 @@ cython_debug/
 test.ipynb
 test.py
 login.py
+files/
+data/
