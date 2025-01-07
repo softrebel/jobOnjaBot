@@ -1,7 +1,7 @@
 from abc import ABC,abstractmethod
 
 
-class CralwerBase(ABC):
+class BaseCrawler(ABC):
     @abstractmethod
     def crawl(self):
         pass
