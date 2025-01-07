@@ -1,7 +1,22 @@
 import pickle
 import lxml.html
 from lxml.html import Element
+import requests
+import re
+import pythonmonkey as pm
+import os
+import aiohttp
 
+CDN_REGEX: str = r"<\/script><script type=\"text\/javascript\">(var.+\n)"
+def get_hash(content: str) -> str:
+    func = "(function() {return hash})();"
+    matches = re.findall(CDN_REGEX, content)
+    if len(matches) == 0:
+        return None
+    js = matches[0]
+    js_code = f"{js}\n{func}"
+    res = pm.eval(js_code)
+    return res
 
 def save_cookies(client, filepath):
     # Convert cookies to a dictionary

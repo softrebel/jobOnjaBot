@@ -7,10 +7,9 @@ def run():
     try:
         JobPlatform.prisma().create(
             {
-
-                    "name": "جابینجا",
-                    "link": "https://jobinja.ir/",
-                
+                "name": "jobinja",
+                "label": "جابینجا",
+                "link": "https://jobinja.ir/",
             }
         )
     except Exception as e:

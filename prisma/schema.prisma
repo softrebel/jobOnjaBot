@@ -12,9 +12,10 @@ datasource db {
 }
 
 model JobPlatform {
-    id   BigInt @id @default(autoincrement())
-    name String
-    link String
+    id    BigInt @id @default(autoincrement())
+    name  String
+    label String
+    link  String
 
     companies Company[] @relation(name: "job_platform")
     jobs      Job[]     @relation(name: "job_platform")
@@ -24,12 +25,14 @@ model JobPlatform {
 }
 
 model Company {
-    id              BigInt      @id @default(autoincrement())
-    name            String
-    description     String?
-    link            String
-    job_plaftorm_id BigInt
-    job_platform    JobPlatform @relation(name: "job_platform", fields: [job_plaftorm_id], references: [id])
+    id          BigInt  @id @default(autoincrement())
+    name        String
+    description String?
+    link        String
+    photo_url   String?
+
+    job_platform_id BigInt
+    job_platform    JobPlatform @relation(name: "job_platform", fields: [job_platform_id], references: [id])
 
     created_at DateTime @default(now())
     updated_at DateTime @updatedAt
@@ -37,12 +40,11 @@ model Company {
 }
 
 model Job {
-    id          BigInt  @id @default(autoincrement())
+    id          BigInt @id @default(autoincrement())
     job_id      String
     title       String
     description String
     link        String
-    photo_url   String?
 
     body String?
 
@@ -50,8 +52,8 @@ model Job {
 
     company_id      BigInt
     company         Company     @relation(name: "company", fields: [company_id], references: [id])
-    job_plaftorm_id BigInt
-    job_platform    JobPlatform @relation(name: "job_platform", fields: [job_plaftorm_id], references: [id])
+    job_platform_id BigInt
+    job_platform    JobPlatform @relation(name: "job_platform", fields: [job_platform_id], references: [id])
     created_at      DateTime    @default(now())
     updated_at      DateTime    @updatedAt
 }

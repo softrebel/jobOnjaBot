@@ -33,7 +33,8 @@ class JobPlatformView(JobPlatformBase):
 class CompanyBase(BaseModel):
     name: str
     link: str
-    job_plaftorm_id: int
+    photo_url: str | None = None
+    job_platform_id: int
     description: str | None = None
 
 
@@ -44,7 +45,7 @@ class CompanyCreate(CompanyBase):
 class CompanyUpdate(BaseModel):
     name: str | None = None
     link: str | None = None
-    job_plaftorm_id: int | None = None
+    job_platform_id: int | None = None
 
 
 class CompanyView(CompanyBase):
@@ -62,13 +63,23 @@ class JobBase(BaseModel):
     title: str
     description: str
     link: str
-    photo_url: str | None = None
     body: str | None = None
     company_id: int
-    job_plaftorm_id: int
+    job_platform_id: int
 
 
 class JobCreate(JobBase):
+    job_metas: list["JobMetaCreate"] = []
+
+
+class JobInput(BaseModel):
+    job_id: str
+    title: str
+    description: str
+    link: str
+    body: str | None = None
+    job_platform_id: int
+    company: CompanyCreate | None = None
     job_metas: list["JobMetaCreate"] = []
 
 
@@ -80,7 +91,7 @@ class JobUpdate(BaseModel):
     photo_url: str | None = None
     body: str | None = None
     company_id: int | None = None
-    job_plaftorm_id: int | None = None
+    job_platform_id: int | None = None
     job_metas: list["JobMetaUpdate"] = []
 
 
@@ -95,7 +106,7 @@ class JobView(JobBase):
 
 
 class JobMetaBase(BaseModel):
-    job_id: int
+    job_id: str
     key: str
     value: str
 
@@ -105,7 +116,7 @@ class JobMetaCreate(JobMetaBase):
 
 
 class JobMetaUpdate(BaseModel):
-    job_id: int | None = None
+    job_id: str | None = None
     key: str | None = None
     value: str | None = None
 

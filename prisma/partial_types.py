@@ -7,10 +7,9 @@ Job.create_partial(
         "job_id",
         "title",
         "description",
-        "photo_url",
         "body",
         "job_metas",
-        "job_plaftorm_id",
+        "job_platform_id",
         "company_id",
     },
 )
@@ -19,8 +18,9 @@ Company.create_partial(
     include={
         "name",
         "link",
+        "photo_url",
         "description",
-        "job_plaftorm_id",
+        "job_platform_id",
     },
 )
 
